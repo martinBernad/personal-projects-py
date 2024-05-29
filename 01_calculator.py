@@ -12,19 +12,13 @@ def load():
     while True:
         try:
             nr1 = float(input("Zadejte 1. číslo: "))
-            if status:
-                break
-            else:
-                continue
+            break
         except ValueError:
             print("CHYBA! Zadejte znovu.")
     while True:
         try:    
             nr2 = float(input("Zadejte 2. číslo: "))
-            if status:
-                break
-            else:
-                continue
+            break
         except ValueError:
             print("CHYBA! Zadejte znovu.")
     
@@ -42,17 +36,16 @@ def process():
             result = nr1 / nr2
         except ZeroDivisionError:
             print("Nulou nelze delit!")
-            status = False
     else:
-        print("CHYBA! - chybný operátor") # check input of load()
-        status = False
+        print("CHYBA! - chybný operátor") # check input of operator()
+        #status = False
         operator()
         process()
 
 def display():
     if status: 
-        print(f"{nr1} {oper} {nr2} = {round(result,4)}")
-
+        print(f"{nr1} {oper} {nr2} = {result}")
+ 
 def escape():
     repeat = input("Chcete znova použít kalkulačku? (a/n): ")
     if repeat == "a":
