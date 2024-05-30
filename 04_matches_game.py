@@ -1,23 +1,46 @@
-def vypocet(asirky_pocet = None):
-    protihrac:str; sirky_pocet:int; uzivatel_volba:int; prepocet:int; vzorec:int
-    
-    sirky_pocet = int(input("Zadej počet sirek pro zahájení hry: ")) 
-    print(f"Pocet sirek je: {sirky_pocet}")
-    protihrac = input("Zadej jméno protiháče: ") 
+protihrac:str; sirky_pocet:int; uzivatel_volba:int; prepocet:int; vzorec:int; text:str
 
-    while sirky_pocet > 0:
+def uvitej():
+    text= "VÍTEJ VE HŘE 'SIRKY'!\n---------------------\n"
+    text+= "Tvým úkolem je odebírat sirky z kopy po jedné, dvou, a nebo tří."
+    text+= "\nCílem je odebrat všechny sirky jako první.\n"
+    return print(text)
+
+def nactiData():
+     global sirky_pocet, protihrac
+     protihrac = input("Zadej jméno protiháče: ")
+     while True:
         try:
-            uzivatel_volba = int(input("Jsi na řade. Zadej počet, kt. chceš odebrat: ")) 
-        except:
-            print("Špatné číslo nebo symbol. Zadejte prosím číslo '1', '2' nebo '3'.\n")
+            sirky_pocet = int(input("Zadej počet sirek pro zahájení hry: ")) 
+            if sirky_pocet < 3 or sirky_pocet > 500:
+                print("Zadejte prosím počet v rozmezí od 3 do 500.") 
+                continue
+            else:
+                print(f"Pocet sirek je: {sirky_pocet}")
+                break
+        except ValueError:
+            print("Chyba při zadávaní, zadejte číslo prosím znova.") 
+
+def vypocet(): 
+    global sirky_pocet
+    text = "Špatné číslo nebo symbol. Zadejte prosím číslo '1', '2' nebo '3'.\n"
+    while sirky_pocet > 0:
+        while True:
+            try:
+                uzivatel_volba = int(input("Jsi na řade. Zadej počet, kt. chceš odebrat: "))
+                if uzivatel_volba >= 4 or uzivatel_volba <= 0:
+                    print(text)
+                    continue
+                else:
+                    break
+            except:
+                print(text)
         
         sirky_pocet-= uzivatel_volba
         print(f"Zbylý počet sirek: {sirky_pocet}")
-    
         if sirky_pocet == 0:
             print("\nZvítezil jsi! Blahopřeji.")
             break
- 
         if sirky_pocet %4 == 0:
             vzorec = 1
         else:
@@ -45,14 +68,11 @@ def vypocet(asirky_pocet = None):
      
         sirky_pocet-= vzorec
         print(f"Na tahu je {protihrac}. Zůstalo {sirky_pocet} sirek.\n")
-    
         if sirky_pocet == 0: print(f"Bohužel, zvítezil '{protihrac}'!")
 
 def hra_sirky():        
-    titulek= "VÍTEJ VE HŘE 'SIRKY'!\n---------------------\n"
-    titulek+= "Tvým úkolem je odebírat sirky z kopy po jedné, dvou, a nebo tří."
-    titulek+= "\nCílem je odebrat všechny sirky jako první.\n"
-    print(titulek)
+    uvitej()
+    nactiData()
     vypocet()
     
 hra_sirky()
