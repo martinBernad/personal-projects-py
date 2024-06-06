@@ -102,7 +102,7 @@ num = int(input("Enter a number -> "))
 mod = num % 2
 if mod == 1: print("This is an odd number.\n")
 else: print("This is an even number.\n")
-"""
+
 # COUNT THE NUMBER 4 IN A GIVEN LIST
 def counter(list:list):
     count = 0
@@ -110,4 +110,87 @@ def counter(list:list):
         if 4 == list[i]:
             count+= 1
     return count
-print(counter([1,4,8,1,4,41,8,4,5]))
+print(counter([1,4,8,1,4,41,8,4,5])); print()
+
+# N COPPIES OF THE FIRST TWO CHARACTERS OF GIVEN STRING.
+# RETURN N COPPIES OF THE STRING IF ITS LENGTH IS LESS THAN 2.
+def stringCopy(n:int,text:str):
+    if len(text) < 2: 
+        return n*text
+    else:
+        return n*text[:2]
+print(stringCopy(3,"cool")); print()
+
+# TEST THE LETTER IF IS VOWL OR NOT
+def testLetter(vowl:str):
+    vowls = ["a","e","i","o","u"]
+    if vowl in vowls: 
+        result = f"'{vowl}' is Vowl."
+    else: 
+        result = f"'{vowl}' is not Vowl."
+    return result
+print(testLetter("a"))
+
+def checkVowl(char:str):
+    vowls = "aeiou"
+    return char in vowls
+print(checkVowl("f"))
+print(checkVowl("e")); print()
+
+# TEST IF THE VALUE IS INSIDE THE LIST
+list1 = [1,2,4,5,"g"]
+list2 = [",", 3, 3, 1, 8]
+def checkValue(n:float, colection:list):
+    for value in colection:
+        if value == n:
+            return True
+    return False
+print(checkValue(7,list1))
+
+# CREATE HISTOGRAM FROM GIVEN LIST
+def histogram(selection:list):
+    for n in selection:
+        print(n*"*")
+histogram([2,4,2,1,5,2,9]); print()
+
+# concentrate all elements in a list into a string and returns it
+def concentrate(lst:list):
+    result = ""
+    for n in lst:
+        result = result + str(n)
+    return result
+print(concentrate([13,3,4,2,6,7])); print()
+"""
+# PRINT EVEN NRS IN THE SAME ORDER AND STOP AFTER 237
+numbers = [    
+    386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345, 
+    399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 
+    815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 
+    958,743, 527
+    ]
+def selectNumbers(nrs:list):
+    for n in nrs:
+        if n == 237: break
+        elif n%2 == 0: print(n)
+selectNumbers(numbers); print()
+
+# PRINT THE COLOR FROM 1 THAT IS NOT IN 2 -> output: {'Black', 'White'}
+color_list_1 = set(["White", "Black", "Red"])
+color_list_2 = set(["Red", "Green"])
+def selectColours(lst1:list, lst2:list):
+    color_selection = list()
+    for color in color_list_1:
+        if color not in color_list_2:
+            color_selection.append(color)
+    return color_selection
+print(selectColours(color_list_1, color_list_2))
+
+print("\nDifference of color_list_1 and color_list_2:")
+print(color_list_1.difference(color_list_2)); print()
+
+# AREA OF TRIANGLE
+def triangle_area(height:float, base:float):
+    area = height*base/2
+    return f"Area of the triangle with base {base} and height {height} is {area}."
+print(triangle_area(4,5))
+
